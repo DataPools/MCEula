@@ -307,7 +307,7 @@
                 $.each(json.found, function(i, item) {
                     blocked.push(item.ip + "<br>");
                 });
-                $('#blocklist').html( "// Last updated " + $.datepicker.formatDate( "MM dd yy", today) + " " + pad(today.getHours()) + ':' + pad(today.getMinutes()) + " PDT" + "<br>");
+                $('#blocklist').html( "// Last updated " + $.datepicker.formatDate( "MM dd yy", today) + " " + pad(today.getHours()) + ':' + pad(today.getMinutes()) + "<br>");
 		$('#blocklist').append(blocked);
             }
           });
