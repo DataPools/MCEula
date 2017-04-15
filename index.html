@@ -290,7 +290,14 @@
 <div class="lower">
 <h2><u>Current EULA Blacklist</u></h2>
   <script type='text/javascript'>
-         var today = new Date();	
+        var today = new Date();
+	function pad(value) {
+         if(value < 10) {
+            return '0' + value;
+         } else {
+           return value;
+        }
+      }
             $.ajax({
             url: "https://mcapi.ca/blockedservers",
             dataType: "text",
@@ -300,7 +307,7 @@
                 $.each(json.found, function(i, item) {
                     blocked.push(item.ip + "<br>");
                 });
-                $('#blocklist').html( "// Last updated " + $.datepicker.formatDate( "MM dd yy", today) + " " + today.getHours() + ':' + today.getMinutes() + " PDT" + "<br>");
+                $('#blocklist').html( "// Last updated " + $.datepicker.formatDate( "MM dd yy", today) + " " + pad(today.getHours()) + ':' + pad(today.getMinutes()) + " PDT" + "<br>");
 		$('#blocklist').append(blocked);
             }
           });
