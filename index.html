@@ -7,6 +7,7 @@
   <meta name="author" content="MCEULA Team">
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="js/jquery-ui.min.js"></script>
   <title>MCEula Home</title>
 <style>
   body { 
@@ -289,6 +290,7 @@
 <div class="lower">
 <h2><u>Current EULA Blacklist</u></h2>
   <script type='text/javascript'>
+         var today = new Date();	
             $.ajax({
             url: "https://mcapi.ca/blockedservers",
             dataType: "text",
@@ -298,7 +300,8 @@
                 $.each(json.found, function(i, item) {
                     blocked.push(item.ip + "<br>");
                 });
-                $('#blocklist').html(blocked);
+                $('#blocklist').html( "// Last updated " + $.datepicker.formatDate( "MM dd yy", today) + " " + today.getHours() + ':' + today.getMinutes() + " PDT" + "<br>");
+		$('#blocklist').append(blocked);
             }
           });
   </script>
