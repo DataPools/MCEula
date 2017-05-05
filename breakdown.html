@@ -192,30 +192,6 @@
 </header>
 </div>
 <div class="sidebar">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type='text/javascript'>
- var exampleNav = $('.sidebar')
-    if (exampleNav.length){
-      exampleNav.on('click', 'a', function(event){
-        event.preventDefault()
-        exampleNav.find('a').removeClass('selected')
-        $('.InTheContent').hide()
-        $('#' + $(this).attr('data-container-id')).show()
-        $(this).addClass('selected')
-      })
-    }
-</script>
-<noscript>
-    <style type="text/css">
-        .InTheContent
-      {
-         display: block;
-       }
-       .sidebar {
-        display: none;
-        }
-    </style>
-</noscript>
 <ul>
 <li><a href="#" class="selected" data-container-id="Overview">Overview</a></li>
 <li><a href="#" data-container-id="EULAItself">What the EULA states</a></li>
@@ -368,6 +344,30 @@ For example, Mojang changed their opinions on vote rewards. Originally they were
 <br><br>
 </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type='text/javascript'>
+ var exampleNav = $('.sidebar')
+    if (exampleNav.length){
+      exampleNav.on('click', 'a', function(event){
+        event.preventDefault()
+        exampleNav.find('a').removeClass('selected')
+        $('.InTheContent').hide()
+        $('#' + $(this).attr('data-container-id')).show()
+        $(this).addClass('selected')
+      })
+    }
+</script>
+<noscript>
+    <style type="text/css">
+        .InTheContent
+      {
+         display: block;
+       }
+       .sidebar {
+        display: none;
+        }
+    </style>
+</noscript>
 <div class="container">
 <div class="footer">
 <center><p>This site is not affiliated with Minecraft or Mojang AB</p></center>
