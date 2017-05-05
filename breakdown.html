@@ -14,23 +14,24 @@
    padding-bottom: 25px;
    line-height: 1.5;
    }
-   .page-wrap { 
-   width: 600px; 
-   position: relative; 
-   }
+   .InTheContent {
+    display: none;
+    }
    .sidebar {
-   position: fixed;
-   float: left;
-   width: 50px;
-   left: 10px;
-   font-size: 12px;
-   top: 60px;
-   margin-top: 27px;
-   margin-left: 10px;
-   border-top-width: 2px;
-   border-top-style: solid;
-   border-top-color: gray;
+   padding-top: 20px;
+   font-size: 14px;
+   align: center;
    text-align: center;
+   margin-bottom: 0px;
+   padding-bottom: 0px;
+   }
+   .sidebar ul {
+   display:inline; 
+   list-style-type: none;
+   }
+   .sidebar li {
+    display: inline;
+    padding-right: 20px;
    }
    h1, h2 {
    margin-bottom: 10px;
@@ -67,6 +68,13 @@
    a:visited {
    color: #1E90FF;
    text-decoration:none;
+   }
+   a.selected {
+   color: white;
+   border-radius: 30px;
+   background: #1E90FF;
+   padding: 2px 12px 4px 12px;
+   text-decoration: none;
    }
    img {
    height: 250px;
@@ -137,6 +145,11 @@
     margin-left: -8px;
     padding-top: 5px;
   }
+  .pre { 
+    background-color: #eff0f1;
+    font-family: monospace;
+    white-space: pre;
+  }
  @media (max-width: 500px) {
    .content {
      font-size: 10px;
@@ -163,7 +176,6 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-42113163-10', 'auto');
   ga('send', 'pageview');
 </script>
@@ -179,25 +191,51 @@
 </ul>
 </header>
 </div>
-<div class="page-wrap">
 <div class="sidebar">
-<p><a href="#sec1">What the EULA states</a></p>
-<p><a href="#sec2">Drastic Effects</a></p>
-<p><a href="#sec3">Why it's frustrating</a></p>
-<p><a href="#sec4">Bypassing the blacklist</a></p>
-<p><a href="#sec5">Conclusion</a></p>
-</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type='text/javascript'>
+ var exampleNav = $('.sidebar')
+    if (exampleNav.length){
+      exampleNav.on('click', 'a', function(event){
+        event.preventDefault()
+        exampleNav.find('a').removeClass('selected')
+        $('.InTheContent').hide()
+        $('#' + $(this).attr('data-container-id')).show()
+        $(this).addClass('selected')
+      })
+    }
+</script>
+<ul>
+<li><a href="#" class="selected" data-container-id="Overview">Overview</a></li>
+<li><a href="#" data-container-id="EULAItself">What the EULA states</a></li>
+<li><a href="#" data-container-id="Analyzation">Analysis</a></li>
+<li><a href="#" data-container-id="Review">Review of Models</a></li>
+<li><a href="#" data-container-id="Effects">Effects</a></li>
+<li><a href="#" data-container-id="Conclusion">Conclusion</a></li>
+</ul>
 </div>
 <div class="content">
-<h1>The Minecraft EULA</h1>
+<div class="InTheContent" id="Overview" style="display:block;">
+<h1>The EULA</h1>
 <hr>
-<p>The Minecraft EULA is a set of rules for Minecraft servers that were put in place in the summer of 2014. For about a year, nothing was done to make sure servers follow these rules. In early 2016, Mojang put in a blacklist for large servers that didn't follow their EULA. Once they complied with the EULA, they would be unblocked. As this blacklist applies to the Minecraft netty, it is very hard to bypass without modifying the program.</p>
-<h2 id="sec1">What the EULA states:</h2>
- <hr>
-<p>First off, according to multiple emails to Mojang and multiple emails from Mojang to big server owners, servers can:</p>
+<p>The Minecraft EULA was a policy implemented in the summer of 2014. It limited the way Minecraft servers could operate. The biggest change was what servers could sell. Previously, such rules on what servers could and could not sell did not exist. For about a year this EULA was not enforced against servers. Starting in May of 2016 servers would be blacklisted for not complying with the EULA - meaning players could not join the server and would be given a fake network error. This blacklist went through the Minecraft netty so that the only way for players to join would be to use a modified client or to downgrade to 1.6.</p>
+<h1>Average cost of running a Minecraft server</h1>
+<hr>
+<p>Costs of maintaining a Minecraft server vary greatly. Everything depends on the server and its demands. Smaller servers are usaully shared hosting which is cheaper than dedicated hosting or virtual private servers which larger servers use. Depending on the CPU and hard drive specifications that the server needs, the price fluctuates greatly. Even calculating the amount of RAM needed has its problems as 10 players standing in one chunk will take far less RAM than 10 players spread out over an entire world.
+<br><br>
+A good equation is <span class="pre">M + N*p</span> where <span class="pre">M</span> is the base cost, <span class="pre">N</span> is the number of players, and <span class="pre">p</span> is the average amount of memory each player needs. Most sources say a good point for <span class="pre">p</span> is 75 MB. The cost will again fluctuate wildly. The cost per GB of RAM on MCProHosting is $10 USD and will be used as the average.
+<br><br>
+Keep in mind large servers like Hypixel won't follow this equation. The equation stated here is for the raw cost of RAM which is largely what providers charge by. Large servers like Hypixel have build costs, development costs, and many others.
+</p>
+</div>
+<div class="InTheContent" id="EULAItself">
+<h1>What the EULA states</h1>
+<hr>
+<p>The Minecraft EULA has several parts to it and only one of those parts applies to servers. These are the guidelines for server taken directly:</p>
 <ul class="quote">
+Therefore, if you comply with and follow the Brand and Asset Usage Guidelines and Naming Guidelines above YOU MAY:
 <li>Charge for access to your server, including a server which hosts your Mods, BUT only if:</li>
-  <ul>
+ <ul>
   <li>you make a single charge per person that is the same for everyone;</li>
 <li>you give everyone you charge, access to all the Mods that you choose to have on your server (except only in respect of genuine admin tools / admin Mods which should be reserved to administrators);</li>
 <li>you only give access to your server to users who have a genuine paid for version of Minecraft;</li>
@@ -208,73 +246,116 @@
 <li>sell cosmetic items, except for "Capes", IF the item sold does not give a user an unfair gameplay advantage over anyone else on the server - i.e there can be no "pay to win".</li>
 <li>sell positive effects or enhancements (other than "Capes") IF everyone on the server is positively affected in exactly the same way.</li>
 <li>provide in-game advertising opportunities, sponsorships, or product placement for 3rd parties IF they don't degrade or interfere with gameplay or give a user an unfair gameplay advantage over anyone else on the server.</li>
-<li>use in-game currencies IF (i) they are "soft currencies" i.e. a currency earned or expended only through gameplay that has no real world value and that cannot be cashed out, used or transferred across free or paid servers, or converted into "credits"; and (ii) you don't give the impression that it comes from or is associated with Mojang.</li></ul></p>
-<p>These are the raw quotes directly from the EULA. If you want to read the full guidelines click <a href="https://account.mojang.com/documents/commercial_guidelines">here</a>.</p>
-<h2 id="sec2">Drastic Effects</h2>
+<li>use in-game currencies IF (i) they are "soft currencies" i.e. a currency earned or expended only through gameplay that has no real world value and that cannot be cashed out, used or transferred across free or paid servers, or converted into "credits"; and (ii) you don't give the impression that it comes from or is associated with Mojang.</li></ul>
+<p>The full guidelines are available to read <a href="https://account.mojang.com/terms#commercial">here</a>.</p>
+</div>
+<div class="InTheContent" id="Analyzation">
+<h1>Analysis</h1>
 <hr>
-<p>More servers would follow these rules, however; it is impossible for a server to sustain itself under these conditions. The most important rule being this:</p>
-<p class="quote">ask for donations (as opposed to direct charges) IF you do not offer the individual donor something in exchange that only he or she can use. You may offer server wide rewards if donation goals are achieved though.</p>
-<p>This rule basically states that server donation systems cannot give something that only affects the individual donor. So either donations have to purely be cosmetic items or changes that affects the whole server.</p>
-
-<p>Most servers cannot comply with the EULA if they want to be able to pay operating costs (Which can be very expensive). Since cosmetics are unpopular to most players, servers cannot sell enough cosmetic items to sustain themselves. Couple this with the fact that only a small percentage of all players donate/buy perks and items. Servers have items in their donation shop that players don't want to spend money on, causing servers to not make money, which they need to survive.</p>
-
-<p>Cosmetics may be fairly sustainable on large minigame servers like HiveMC, but they have a larger player base than most servers. Hive has a very large player base made up of young players, who are interested in and enjoy cosmetic effects. Trying to apply this concept onto a small prison, factions, or survival server would lead to little money being made by the server. These gametypes are usually played by a smaller, older playerbase, who notice that cosmetic effects "mean" nothing on these gametypes.</p>
-
-<p>Small(er) servers or servers that aren't minigames servers most likely can't sustain themselves on cosmetics.</p>
-
-<p>What about server-wide perks? And charging for server access?</p>
-
-<p>Boosters are usually when a certain goal is reached, all players on the server will recieve a perk, either temporary or permanent. Boosters can be useful, but again take a long time and depending on how big the server is, may not be enough to pay operating costs. Remember that only a small percentage of players actually donate, so filling the booster can take too long of a time. These donations would practically be useless until the booster is reached. Some players may be hesitant to donate knowing that it won't have any effect until the goal is reached, or that the perk is temporary.</p>
-
-<p>Most people buy products for an advantage. Someone might buy a toaster because it is faster than the oven at toasting bread. Most people don't buy a car just because it is nice and shiny, they buy it to get to their destinations safely or that the car has advantage over walking and taking public transport. By taking away this advantage, less product is sold, people buy things for advantages. This applies to Minecraft servers as well.</p>
-
-<p>This leads into the final EULA-compliant way of making money which also gives players an advantage; the charging for server access model. The EULA states:</p>
-<p class="quote">charge for access to your server, including a server which hosts your Mods, BUT only if:
-<ul class="quote">
-  <li>you make a single charge per person that is the same for everyone;</li>
-<li>you give everyone you charge, access to all the Mods that you choose to have on your server (except only in respect of genuine admin tools / admin Mods which should be reserved to administrators);</li>
-<li>you only give access to your server to users who have a genuine paid for version of Minecraft;</li>
-<li>you own or control the server and continue to do so for the whole time that you charge for access to it - so, if you sell the actual servers or server space with Mods pre-installed on them, you must ensure that the person buying the server is aware that she must follow these rules. Essentially you can't get round the rules above by setting up servers with Mods on and then selling those set-ups; and
-overall your access charges should be targeted to cover your operational costs of running the server.</li></ul>
-</p>
-<p>Seems fine right? It's not. Servers that charge access are even worse off. Nobody wants to buy access to a server they don't know if they will like, especially with access fees being over a few dollars. Players will simply go to a large free server. Charging for server-access won't get any server very far.</p>
-<h2 id="sec3">Why it's frustrating</h2>
-<hr>
-<p>Many people speculate the reason that Mojang put these rules in place is so that they won't have to deal with angry parents that had their credit cards stolen. This won't solve the problem, because if kids really want access to a server, or a cool cosmetic pet, they will find a way to pay for these things. No matter what, this EULA won't solve the problem. The problem doesn't lie with servers, it lies with the parents who allow their kids to steal.</p>
-
-<p>Another reason the EULA is frustrating is because Mojang keeps changing the rules. According to this screenshot below of an email a server owner recieved, voting rewards are no longer allowed, due to the fact that players are paying with "time."</p>
-<img src="assets/voteemail.png">
-
-<p>They also seemed to have change their status on a number of other things, such as the /ptime command which allows players to set a personal time of day for themselves which does not affect other players. According to <a href="http://prnt.sc/d3igpx">this</a> screenshot below of an email sent to player galacticwarrior9 from Mojang on May 4, in reponse to galacticwarrior9's email states that personal time isn't allowed. </p>
-<p>However, according to <a href="https://www.spigotmc.org/threads/eula-info-nugget-allowed-disallowed-perks-blacklist-bypass.159648/">this thread</a> on SpigotMC, Mojang seems to have changed their mind about this.</p>
-<p>However, it seems like they flipped again.  According to this quote taken from <a href="https://help.mojang.com/customer/en/portal/articles/1590522-minecraft-commercial-use">the offical Mojang website</a>:
-<ul class="quote">
-<p>Due to this, you are not allowed to sell the following for hard currency:</p>
-<li>The ability to:</li> 
+<p>Analyzing the guidelines comes down to three points:</p>
 <ul>
-<li>use a portable crafting table, chest, ender chest, compass, etc.</li>
-<li>set the time of day or weather, for yourself or others, other than in places where the intended server's gameplay does not occur, such as the lobby of a minigame server.</li>
+<li>Servers may only sell enhancements only if it affects everyone (Server-wide boosters)</li>
+<li>If servers are selling direct to the player the perks may only be cosmetic (Nametags, particles, etc.)</li>
+<li>Servers may advertise to get revenue. (Adventurize, AdBolt).</li>
+<li>Servers may make users pay for server entry but only if it is a single charge for all users.</li>
+<li>In-game currencies may be used as long as they cannot be purchased or cashed out for real world money.</li>
 </ul>
+<p>This leaves 4 revenue models that are allowed by the EULA. Servers can:</p>
+<ul>
+<li>Sell server-wide boosters that affect everyone</li>
+<li>Sell cosmetic perks that do not affect gameplay</li>
+<li>Have in-game advertising</li>
+<li>Have access charges</li>
 </ul>
-<p>Mojang seems to have flipped their opinion yet again, without notifying anyone</p>
-<p>Serayne92 (Owner of ArkhamNetwork) was frustrated with the fact that Arkham had to keep redoing their shop due to the fact that Mojang kept changing their rules. You can read the whole post <a href="http://arkhamnetwork.org/community/threads/arkhamnetwork-blacklisted-and-squidhq-live.61881/">here</a>. It seems that Arkham had to redo their server store 4 different times due to Mojang changing their EULA before they gave up.</p>
-<ol>
-<li><p>Arkham Redo #1 <a href="http://arkhamnetwork.org/2016/07/eula-compliance-updates/">here</a></p></li>
-<li><p>Arkham Redo #2 <a href="http://arkhamnetwork.org/2016/07/eula-compliance-updates-2/">here</a></p></li>
-<li><p>Arkham Redo #3 <a href="http://arkhamnetwork.org/2016/07/rank-item-changes-regarding-eula-compliance/">here</a></p></li>
-<li><p>Arkham Redo #4 <a href="http://arkhamnetwork.org/2016/07/more-eula-updates/">here</a></p></li>
-</ol>
-<p>The worst about this, especially with vote rewards change is that Mojang doesn't publicly announce these changes and instead quietly contacts server owners about any changes they have made. The community instead has to rely on the information in these emails being released publicly in order to find out.</p>
-
-<p>Although some servers do seem to overprice their ranks and force players to pay to play, this is by no means universal. Players can choose not to play on a certain server.
-
+<h2>Server wide boosters</h2>
+<hr>
+<p>Server wide boosters are when a server has a donation goal. Once this donation goal is reached, everyone on the server recieves that perk either permanently or temporarily. It has to be equal for all players across the server.
+<br><br>
+Server wide boosters are a good idea but they only seem to work on smaller servers. This system also relies on good samartians to donate to the server. Big servers with 100+ players will have to rely on good samartians to reach the donation goal.</p>
+<h2>Cosmetic perks</h2>
+<hr>
+<p>Cosmetic perks are perks that do not affect gameplay at all and give no advantages at all. Cosmetic perks are what big minigames servers like Hypixel and HiveMC are doing. Special particles and colored nametags are what these servers are mainly selling. This revenue model may prove quite good for large minigames servers. Servers that don't have ongoing gameplay but instead small short lived minigames with limited amounts of players. On minigames servers, items, armor, etc. don't transfer between games. Particles and cosmetics do.
+<br><br>
+This system is good for minigames servers, but not as well for other gametypes. On Survival, Factions, and Prison servers. On these types of servers, gameplay is much more long-term. Cosmetics don't make as much of a profound effect here. Cosmetics aren't as appealing as on a minigames server. Age demographics on servers may also contribute to this. Younger ages who play on minigames servers may be excited about showing off their new particles. Older ages who play on Factions, Prison, or Survival gametypes may simply not care as much about cosmetics.</p>
+<h2>In-game advertising</h2>
+<hr>
+<p>In-game advertising seems to lack in the revenue aspect. One of the most prominent advertisers is <a href="http://adbolt.net/">AdBolt</a>. AdBolt pays based on impressions - the amount of players who see an advertisement and seems to pay about $1 USD per 1000 impressions. AdBolt's <a href="https://adbolt.net/faq.php">FAQ</a> states that if a server has 20 players in an hour, 400 impressions are made. 400 divided by 20 equals 20. This means that 20 advertisements an hour must come to gain those impressions or about 1 advertisment every 3 minutes. Then again it would take 2.5 hours to make $1. Taking the formula <span class="pre">M + N*p</span> mentioned before and plugging in the numbers is <span class="pre">0+20*75=1500 MB</span>. 1500 MB to GB is 1.5 GB.
+<br><br>
+Taking the MCProHosting prices also mentioned before yields a total of $15/month. Not all hours of the day will the server encounter these amount of players but it is actually a great model that may be sustainable. The current status of AdBolt is unknown, however. It is also unknown what kinds of ads AdBolt displays as server owners can easily sign up and advertise their own servers on others via AdBolt.
+<br><br>
+Looking at the other ad provider, <a href="https://www.adventurize.com/">Adventurize</a> tells a slightly different story. Adventurize promises never to advertise other servers, however revenue is based upon clickthrough rates. Text-based advertisements may not have a very good clickthrough rate and without a large player base it may be nearly impossible to pay the server bills with Adventurize.</p>
+<h2>Access Charges</h2>
+<hr>
+<p>The 4th and final revenue model sactioned by the EULA is charging for server access. This model would most likely be the most unsuccessful. There doesn't seem to be very many servers that actually charge for access. A large advertising budget would be needed to get players to pay money to get into a server they haven't seen much of. Servers that do this will be competing with larger, free ones.</p>
+<h2>Pure Donations</h2>
+<hr>
+<p>Why don't servers simply run off of pure donations instead of selling items? The people who play Minecraft are fairly young in age. Items and perks are more appealing to this demographic. Minecraft servers are also businesses not charities; due to this people may not feel the same emotions when donating to a charity. Servers have large operating costs and the good samartians that donate may not be enough to keep the server giving fresh content. If Minecraft servers didn't make any profit, large servers like HiveMC, Hypixel, and Mineplex may not exist at all.</p>
+</div>
+<div class="InTheContent" id="Review">
+<h1>Review of Revenue Models</h1>
+<hr>
+<p>The summarized points of each EULA sanctioned revenue model.</p>
+<p><strong>Server wide boosters</strong>:</p>
+<ul>
+<li>Works better on smaller servers</li>
+<li>Rely on good samartians</li>
+<li>May not be enough to pay operating costs</li>
+<li>May not do as well on bigger servers</li>
+</ul>
+<p><strong>Cosmetic perks</strong>:</p>
+<ul>
+<li>Great for minigames servers</li>
+<li>Appeals to younger audience</li>
+<li>Unknown if appealing in other gametypes</li>
+</ul>
+<p><strong>AdBolt</strong>:</p>
+<ul>
+<li>Can advertise servers</li>
+<li>Current status unknown</li>
+<li>Pays by impressions</li>
+</ul>
+<p><strong>Adventurize</strong>:</p>
+<ul>
+<li>Promises not to advertise servers</li>
+<li>Pays by number of clicks</li>
+</ul>
+<p><strong>Access Charges</strong>:</p>
+<ul>
+<li>Has to compete against free servers</li>
+<li>Hopes players donate based on features alone without seeing server</li>
+</ul>
+<p><strong>Pure Donations</strong>:</p>
+<ul>
+<li>Rely on good samartians</li>
+<li>May not be enough</li>
+<li>Servers are businesses not charities and that my not be appealing</li>
+</ul>
+<p>The best solution here would be AdBolt. AdBolt might be able to just pay hosting costs. It is unknown if AdBolt is still functioning and if they advertise servers or not. Obviously, AdBolt would not be the best solution for a big server as there are other costs besides hosting.
+<br><br>
+If a server isn't a minigames server and isn't particularly big the only solution may be to not follow the EULA at all.</p>
+</div>
+<div class="InTheContent" id="Effects">
+<h1>Effects on Servers</h1>
+<hr>
+<p>Some of the most drastic effects of the EULA have been on servers. Now that the blacklist is in effect large servers that do not follow the EULA have been effectively forced to follow the EULA or lose all of their player base and subsequently their profit.
+<br><br>
+The enforcement of EULA was organized incredibly poorly. First, Mojang isn't communicating directly with the community except for 2 short posts on the EULA back in 2014. Any changes to the EULA are emailed directly to server owners. In fact, Mojang has never publicly stated anything about the blacklist. Most of what the community knows is based upon the emails from Mojang server owners have released.
+<br><br>
+For example, Mojang changed their opinions on vote rewards. Originally they were allowed. Then Mojang emailed server owners stating they weren't allowed due to the fact that players were "paying with time." Mojang agained changed their policies re-allowing vote rewards.</p>
+<img src="assets/voteemail.png">
+<h2>Bypassing the Blacklist</h2>
+<hr>
+<p>A modified client by the name of SquidHQ bypasses the blacklist. The client is open-source and contains no other features other than allowing players to join blacklisted servers. <a href="http://squidhq.com">squidhq.com</a>
 </p>
-<h2 id="sec4">Bypassing the blacklist</h2>
+</div>
+<div class="InTheContent" id="Conclusion">
+<h1>Conclusion</h1>
 <hr>
-<p>A new launcher has been created that bypasses the EULA blacklist: <a href="http://squidhq.com">squidhq.com</a></p>
-<h2 id="sec5">Conclusion</h2>
-<hr>
-<p>The goal of the EULA may have been to stop server owners from exploiting young children, but the changes it makes affects all servers, large or small. Trying to enforce a EULA as a one size fits all solution to this just hurts servers even more.</p>
+<p>The goals of the EULA may have been to make a more positive enviroment and take some of the blame about servers off of Mojang, but a one size fits all solution just doesn't seem to work. Mojang needs to start communicating with the community about any EULA changes made and about the blacklist.</p>
+<h2>Footnote: Age Demographics</h2>
+<p>Several items about age demographics are mentioned here. Age demographics in Minecraft are hard to fully know. For example, a survey was done on Hypixel but it was posted to the forums. There is an average of about ~30K players on at any given point however there is only ~900,000 members on the Hypixel forums. Dividing these statistics would yield a statistic of 30% of Hypixel players are registered on the forums but that isn't a valid measure either. 30K is the amount of players on at a given time and the ~900,000 users doesn't count users who didn't see the post or are aren't active. Age demographics in Minecraft are hard to get. The survey data that was found from the survey on Hypixel on age demographics would be incorrect anyways because younger children would most likely not be on the forums or be less likely to fill out the survey.</p>
+<br><br>
+</div>
 </div>
 <div class="container">
 <div class="footer">
@@ -283,3 +364,4 @@ overall your access charges should be targeted to cover your operational costs o
 </div>
 </body>
 </html>
+
