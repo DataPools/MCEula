@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="author" content="MCEULA Team">
+  <style>
+   body { 
+   font-family: Helvetica, Arial;
+   overflow-x: hidden;
+   }
+   .content {
+   padding-left: 100px;
+   padding-right: 100px;
+   padding-bottom: 25px;
+   line-height: 1.5;
+   min-height: calc(100vh - 166px);
+   }
+   .InTheContent {
+    display: none;
+    }
+   .sidebar {
+   padding-top: 20px;
+   font-size: 14px;
+   align: center;
+   text-align: center;
+   margin-bottom: 0px;
+   padding-bottom: 0px;
+   }
+   .sidebar ul {
+   display:inline; 
+   list-style-type: none;
+   }
+   .sidebar li {
+    display: inline;
+    padding-right: 20px;
+   }
+   h1, h2 {
+   margin-bottom: 10px;
+   }
+   h1 {
+   font-size: 40px;
+   }
+  .quote {
+    color: gray;
+    display: block;
+    border-left-width: 2px;
+    border-left-style: solid;
+    border-left-color: gray;
+    padding-left: 25px;
+    font-size: 15px;
+    }
+   ul.quote {
+    padding-left: 42px;
+    }
+   ol {
+    margin-bottom: 3px;
+   }
+   li {
+    padding-bottom: 5px;
+   }
+   a:link {
+   color: #1E90FF;
+   text-decoration:none;
+   }
+   a:hover {
+   color: #1E90FF;
+   text-decoration:underline;
+   }
+   a:visited {
+   color: #1E90FF;
+   text-decoration:none;
+   }
+   a.selected {
+   color: white;
+   border-radius: 30px;
+   background: #1E90FF;
+   padding: 2px 12px 4px 12px;
+   text-decoration: none;
+   }
+   .navheader {
+     font-size: 20px;
+     padding-bottom: 10px;
+     padding-left: 20px;
+     color:white;
+     padding-top:17px;
+     
+   }
+ header {
+    height: 50px;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: gray;
+    background: black;
+    margin: -20px -15px 0px -10px;
+    padding: 0px;
+ }
+  .navbar {
+    color: white;
+    float; left;
+    position: absolute;
+    padding-left: 50px;
+    float: center;
+    margin-top: 14px;
+    top: 0px;
+    left: 100px;
+    display: inline;    
+    list-style-type: none;
+    text-align: center;
+ }
+ .header li {
+   display: inline;
+   padding-right: 30px;
+ }
+ .header a {
+   text-decoration: underline;
+   color: white;
+ }
+ .navheader a {
+   text-decoration: none;
+}
+ .navheader a:hover {
+   text-decoration: none;
+}
+  .footer {
+    background-color: purple;
+    height: 50px;
+    bottom: 0px;
+    margin-bottom: 0px;
+    position: relative;
+    border-top-style: solid;
+    border-top-color: #d442f4;
+    border-top-width: 5px;
+  }
+  .footer p {
+    color: white;
+    margin: 0 auto;
+    padding-top: 15px;
+  }
+  .container {
+    position: absolute;
+    width: 100%;
+    margin-left: -8px;
+    padding-top: 5px;
+  }
+  .pre { 
+    background-color: #eff0f1;
+    font-family: monospace;
+    white-space: pre;
+  }
+ @media (max-width: 520px) {
+   .content {
+     font-size: 10px;
+     padding: 0px 0px 0px 100px;
+   }
+   .quote {
+     font-size: 14px;
+   }
+   .header {
+     font-size: 16px;
+   }
+   .footer {
+     font-size: 14px;
+   }
+   .quote {
+     font-size: 14px;
+   }
+ }
+  </style>
+<title>MCEula Breakdown</title>
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"> 
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-42113163-10', 'auto');
+  ga('send', 'pageview');
+</script>
+</head>
+<body>
+<div class="header">
+<header>
+<h1 class="navheader"><a href="/">MCEULA:</a></h1>
+<ul class="navbar">
+<li><a href="/">Home</a></li>
+<li><a href="/breakdown">Breakdown</a></li>
+<li><a href="/bypass">Bypass</a></li>
+<li><a href="https://emails.mceula.com">Emails</a></li>
+</ul>
+</header>
+</div>
+<div class="content">
+<h1>Bypassing the Blacklist</h1>
+<hr>
+<p>With the increasing frequency of Mojang blacklisting servers, it is becoming increasingly important for server owners and players to learn how to circumnavigate the blacklist.</p>
+<h2>SquidHQ</h2>
+<hr>
+<p><a href="https://squidhq.com">SquidHQ</a> is a client that bypasses the EULA blacklist. This client contain no other modifications other than allowing players to join blacklisted servers. The client is open source, the source is available on <a href="https://github.com/SquidHQ">Github</a>. Servers can also reward players for using SquidHQ via the <a href=https://squidhq.com/plugin/">SquidHQ plugin</a>.
+<h2>SRV Bypass</h2>
+<hr>
+<p>Servers can bypass the blacklist by using an SRV record to point their domain to another domain, thus fooling the blacklist. However, Mojang does try to blacklist these domains as well. Servers have to constantly get new domains that aren't blacklisted by Mojang to set in their SRV records</p>
+<p>The steps for setting up an SRV record are relatively simple:</p>
+<ol>
+<li>Get a domain from either <a href="http://ddns.net">DDNS</a> or <a href="http://noip.com">NOIP</a> which are free or by buying one from <a href="http://namecheap.com">Namecheap</a> or another registrar. Using a free subdomain service is recommended due to the fact that they are free and Mojang cannot blacklist the root domain.</li>
+<li>Login into your main domain's registrar. For example, if your server IP was <span class="pre">play.example.com</span> you would want to login to <span class="pre">example.com</span> registrar.</li>
+<li>Go the "DNS records" section of your domain. If you don't know where this is, contact your domain registrar</li>
+<li>Add a new SRV record. If your registrar does not offer SRV records you should <a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare">switch to Cloudflare</a>.</li>
+<li>Set the service to <span class="pre">_minecraft</span>, set the protocol to <span class="pre">_tcp</span>. Don't mess with priority or weight. Set the port to <span class="pre">25565</span> or the port your server is running on. Set the target to the domain you got earlier. <br>Example:</li>
+<img src="https://camo.githubusercontent.com/8a2977005236f998bcf12be95d9116990852fc29/68747470733a2f2f692e746370722e63612f48596a4f435259">
+<li>Click the "Done" button or checkmark to submit the SRV record. Mojang may blacklist the target domain within your SRV record, so you may need to change it every few days.</li>
+</ol>
+Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft's EULA Blacklist Guide</a> for the SRV guide and example picture.
+</div>
+<div class="container">
+<div class="footer">
+<center><p>This site is not affiliated with Minecraft or Mojang AB</p></center>
+</div>
+</div>
+</body>
+</html>
+
