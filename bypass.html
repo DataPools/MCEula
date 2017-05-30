@@ -109,7 +109,7 @@
  }
  .header li {
    display: inline;
-   padding-right: 30px;
+   padding-right: 25px;
  }
  .header a {
    text-decoration: underline;
@@ -204,7 +204,7 @@
 <p>Servers can bypass the blacklist by using an SRV record to point their domain to another domain, thus fooling the blacklist. However, Mojang does try to blacklist these domains as well. Servers have to constantly get new domains that aren't blacklisted by Mojang to set in their SRV records</p>
 <p>The steps for setting up an SRV record are relatively simple:</p>
 <ol>
-<li>Get a domain from either <a href="https://ddns.net">DDNS</a> or <a href="https://noip.com">NOIP</a> which are free or by buying one from <a href="https://namecheap.com">Namecheap</a> or another registrar. Using a free subdomain service is recommended due to the fact that they are free and Mojang cannot blacklist the root domain.</li>
+<li>Get a domain from either <a href="http://ddns.net">DDNS</a> or <a href="https://noip.com">NOIP</a> which are free or by buying one from <a href="https://namecheap.com">Namecheap</a> or another registrar. Using a free subdomain service is recommended due to the fact that they are free and Mojang cannot blacklist the root domain.</li>
 <li>Login into your main domain's registrar. For example, if your server IP was <span class="pre">play.example.com</span> you would want to login to <span class="pre">example.com</span> registrar.</li>
 <li>Go the "DNS records" section of your domain. If you don't know where this is, contact your domain registrar</li>
 <li>Add a new SRV record. If your registrar does not offer SRV records you should <a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare">switch to Cloudflare</a>.</li>
