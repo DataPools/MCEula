@@ -193,26 +193,36 @@
 </header>
 </div>
 <div class="content">
-<h1>Bypassing the Blacklist</h1>
+<h1>Statistics</h1>
 <hr>
-<p>With the increasing frequency of Mojang blacklisting servers, it is becoming increasingly important for server owners and players to learn how to circumnavigate the blacklist.</p>
-<h2>SquidHQ</h2>
+<p>Two servers, one following the EULA and one that was not, had their profits tracked over the period of 10 days between July 21, 2017 to July 31, 2017 . The two servers were:</p>
+<ul>
+<li><a href="http://rebirthcraft.net">Rebirthcraft</a> - Does not follow the EULA and averages about ~118 players.</li>
+<li><a href="http://www.minetime.com">Minetime</a> - Follows the EULA and averages about ~152 players.</li>
+</ul>
+<p>These servers were picked due to the presence of the "Recent Donations" widget on their store pages and for their fairly large playerbases.</p>
+<p>Over the course of ten days both servers' store pages were scraped every 30 minutes. The "recent donators" section was checked for any new entries and any new entries found were recorded into a text file. In addition, both servers' current player counts were measured.</p>
+<h2>Results</h2>
 <hr>
-<p><a href="https://squidhq.com">SquidHQ</a> is a client that bypasses the EULA blacklist. This client contain no other modifications other than allowing players to join blacklisted servers. The client is open source, the source is available on <a href="https://github.com/SquidHQ">Github</a>. Servers can also reward players for using SquidHQ via the <a href="https://squidhq.com/plugin/">SquidHQ plugin</a>.
-<h2>SRV Bypass</h2>
+<p>After ten days:</p>
+<ul>
+<li>Rebirthcraft made a total of $1,878.96 USD</li>
+<li>Minetime made a total of $840.00 USD.</li>
+</ul>
+<p>The rates of redonation (the percentage of transactions that were non-unique) were:</p>
+<ul>
+<li>Rebirthcraft - 24.00%</li>
+<li>Minetime - 24.14%</li>
+</ul>
+<p>Rebirthcraft, which does not follow the EULA, made 223.68% more than Minetime, which follows the EULA. Rebirthcraft has about 77% of the playerbase Minetime has.</p>
+<h2>Analysis</h2>
 <hr>
-<p>Servers can bypass the blacklist by using an SRV record to point their domain to another domain, thus fooling the blacklist. However, Mojang does try to blacklist these domains as well. Servers have to constantly get new domains that aren't blacklisted by Mojang to set in their SRV records</p>
-<p>The steps for setting up an SRV record are relatively simple:</p>
-<ol>
-<li>Get a domain from either <a href="http://ddns.net">DDNS</a> or <a href="https://noip.com">NOIP</a> which are free or by buying one from <a href="https://namecheap.com">Namecheap</a> or another registrar. Using a free subdomain service is recommended due to the fact that they are free and Mojang cannot blacklist the root domain.</li>
-<li>Login into your main domain's registrar. For example, if your server IP was <span class="pre">play.example.com</span> you would want to login to <span class="pre">example.com</span> registrar.</li>
-<li>Go the "DNS records" section of your domain. If you don't know where this is, contact your domain registrar</li>
-<li>Add a new SRV record. If your registrar does not offer SRV records you should <a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare">switch to Cloudflare</a>.</li>
-<li>Set the service to <span class="pre">_minecraft</span>, set the protocol to <span class="pre">_tcp</span>. Don't mess with priority or weight. Set the port to <span class="pre">25565</span> or the port your server is running on. Set the target to the domain you got earlier. <br>Example:</li>
-<img src="https://camo.githubusercontent.com/8a2977005236f998bcf12be95d9116990852fc29/68747470733a2f2f692e746370722e63612f48596a4f435259">
-<li>Click the "Done" button or checkmark to submit the SRV record. Mojang may blacklist the target domain within your SRV record, so you may need to change it every few days.</li>
-</ol>
-Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft's EULA Blacklist Guide</a> for the SRV guide and example picture.
+<p>Looking at these results, some conclusions can be made. The first is that the non-EULA compliant server made nearly twice as much as the EULA compliant server even though it has a smaller playerbase. Of course more data should be found to confirm these findings.</p>
+<p>Perhaps other factors such as how much players are pressured to spend on each server contributed to how much each server made and the stark differences between the two.</p>
+<h2>Spreadsheet Data</h2>
+<hr>
+<p>The full spreadsheet can be found <a href="https://goo.gl/Rz7vmJ">here</a>.</p>
+<iframe height="500px" width="100%" style="display:block; margin-top:10px;" src="https://docs.google.com/spreadsheets/d/1hefoYXEZHLdUvSjsqjhWd_IhTzjco-9CRFrb3W8nElc/pubhtml?gid=0&amp;single=true&amp;&amp;headers=false"></iframe>
 </div>
 <div class="container">
 <div class="footer">
