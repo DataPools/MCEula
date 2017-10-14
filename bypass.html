@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="author" content="MCEULA Team">
+  <meta name="description" content="A how-to on how to bypass the Minecraft EULA blacklist for server owners and players alike.">
   <style>
    body { 
    font-family: Helvetica, Arial;
@@ -149,6 +150,12 @@
   }
    img {
     max-width: 80vw;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;   
+   }
+   pre {
+   background-color: #eff0f1;
    }   
  @media (max-width: 520px) {
    .content {
@@ -214,11 +221,60 @@
 <li>Click the "Done" button or checkmark to submit the SRV record. Mojang may blacklist the target domain within your SRV record, so you may need to change it every few days.</li>
 </ol>
 Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft's EULA Blacklist Guide</a> for the SRV guide and example picture.
-<h2>Resources</h2>
+<h2>Automating SRV Records</h2>
 <hr>
-<ul>
-<li><a href="/files/MinecraftSRVRotator.zip">Automatic SRV Rotator</a> - This tool automatically checks its files for domains and updates the SRV record to the first domain that is unblacklisted. Running this on a cron job will automatically update your SRV record whenever your server's SRV record gets blacklisted. This tool is only compatible with Cloudflare.</li>
-</ul>
+<p>Automating the updating of SRV records allows a server to instantly switch over to a SRV target when Mojang blacklists the current one.</p>
+<ol>
+<li>First, switch to Cloudflare. The automating program only supports Cloudflare and the Cloudflare API</li>
+<li>Second, make an SRV record for the server IP to be pointed to. You can follow the steps in the section above to create one. This program currently only supports the port 25565</li>
+<li>Get your Cloudflare API Keys. Login to Cloudflare and click on "My Profile" on the top right of the page and scroll to "Global API Key." If you do not have any api keys, make sure to generate some. Next to "Global API Key" Select "View API Key." Make sure to copy the set of characters in the box. <img src="assets/apikey.png"></li>
+<li><a href="/files/MinecraftSRVRotator.zip">Download Automatic SRV Rotator</a> and unzip it. Paste your API Key between the quotes to the right of "X-Auth-Key". Type your Cloudflare account email between the quotes beside "X-Auth-Email"</li>
+<pre>{
+"X-Auth-Email":"youremail@emailprovider.com",
+"X-Auth-Key":"[My Cloudflare API Key]",
+"zone_id":"",
+"record_id":""
+}
+</pre>
+<li>You are going to need your Zone ID. For this using a REST Client is recommended. An example of one is <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US">Advanced REST Client</a> for Google Chrome. Other extensions exist on other browsers as well. </li>
+<li>Open the REST Client and use it to send a GET Request to <span class="pre">https://api.cloudflare.com/client/v4/zones</span> parameters should look like as follows:
+<img src="assets/arcclient.png"> Make sure to put in information for X-Auth-Email and X-Auth-Key</li>
+<li>A response should come back looking something like this: <pre>{
+"result": [
+  {
+"id": "132344xjrjjq12344",
+"name": "example.com",
+"status": "active",
+"paused": false,
+"type": "full",
+"development_mode": 0,
+"name_servers": [
+  "dora.ns.cloudflare.com",
+  "hank.ns.cloudflare.com"
+]
+}
+</pre>
+Copy the ID of the domain you want to have modified into the config.json of the MinecraftSRVRotator. This is the ZoneID and goes between the quotes accross from ZoneID.
+<pre>{
+"X-Auth-Email":"youremail@emailprovider.com",
+"X-Auth-Key":"[My Cloudflare API Key]",
+"zone_id":"132344xjrjjq12344",
+"record_id":""
+}
+</pre>
+</li>
+<li>Now the Record ID is needed. Open the REST Client and change the URL to send the request to. Make sure to have the Zone ID handy. Send the request (with the same headers as before) to <span class="pre">https://api.cloudflare.com/client/v4/zones/The ZONE ID/dns_records</span> Replace "THE ZONE ID" with the zone id in the config.json that was retrieved before. All the DNS records should show up as the response. Search for the SRV record inside that response. Once you find it, get the ID for it and put it in the config.json. The config.json is now complete!</li>
+<li>Get some domains that point to the Server's IP. The sections above explain this. Make a good amount of domains, you might make more or less depending on how often you get blacklisted. Take these domains and put them into domains.txt. Make sure each domain has its own line. Example:
+<pre>bypassblacklist1.ddns.net
+bypassblacklist2.ddns.net
+bypassblacklist3.ddns.net
+bypassblacklist4.ddns.net
+bypassblacklist5.ddns.net
+</pre>
+</li>
+<li>Add MinecraftSRVRotator.jar to a cron job or automatic program executor of your choice. You can run it every 5 minutes, 15 minutes, or every hour. Shorter intervals are recommended because srv records will be replaced quicker. This program will check if the current SRV target is blacklisted, if it is it will go to domains.txt, find the nearest unblacklisted target, and set the SRV record to that target. </li>
+<li>All steps are completed. Be sure to spread the word about how to bypass the EULA!</li>
+</ol>
 </div>
 <div class="container">
 <div class="footer">
