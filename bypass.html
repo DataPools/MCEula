@@ -254,7 +254,7 @@ Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft
 ]
 }
 </pre>
-Copy the ID of the domain you want to have modified into the config.json of the MinecraftSRVRotator. This is the ZoneID and goes between the quotes accross from ZoneID.
+Copy the ID of the domain you want to have modified into the config.json of the MinecraftSRVRotator. This is the ZoneID and goes between the quotes across from ZoneID.
 <pre>{
 "X-Auth-Email":"youremail@emailprovider.com",
 "X-Auth-Key":"[My Cloudflare API Key]",
@@ -263,7 +263,14 @@ Copy the ID of the domain you want to have modified into the config.json of the 
 }
 </pre>
 </li>
-<li>Now the Record ID is needed. Open the REST Client and change the URL to send the request to. Make sure to have the Zone ID handy. Send the request (with the same headers as before) to <span class="pre">https://api.cloudflare.com/client/v4/zones/The ZONE ID/dns_records</span> Replace "THE ZONE ID" with the zone id in the config.json that was retrieved before. All the DNS records should show up as the response. Search for the SRV record inside that response. Once you find it, get the ID for it and put it in the config.json. The config.json is now complete!</li>
+<li>Now the Record ID is needed. Open the REST Client and change the URL to send the request to. Make sure to have the Zone ID handy. Send the request (with the same headers as before) to <span class="pre">https://api.cloudflare.com/client/v4/zones/The ZONE ID/dns_records</span> Replace "THE ZONE ID" with the zone id in the config.json that was retrieved before. All the DNS records should show up as the response. Search for the SRV record inside that response. Once you find it, get the ID for it and put it in the config.json. The config.json is now complete!
+<pre>{
+"X-Auth-Email":"youremail@emailprovider.com",
+"X-Auth-Key":"[My Cloudflare API Key]",
+"zone_id":"132344xjrjjq12344",
+"record_id":"[My Record ID]"
+}
+</pre></li>
 <li>Get some domains that point to the Server's IP. The sections above explain this. Make a good amount of domains, you might make more or less depending on how often you get blacklisted. Take these domains and put them into domains.txt. Make sure each domain has its own line. Example:
 <pre>bypassblacklist1.ddns.net
 bypassblacklist2.ddns.net
