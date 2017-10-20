@@ -227,7 +227,7 @@ Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft
 <ol>
 <li>First, switch to Cloudflare. The automating program only supports Cloudflare and the Cloudflare API</li>
 <li>Second, make an SRV record for the server IP to be pointed to. You can follow the steps in the section above to create one. This program currently only supports the port 25565</li>
-<li>Get your Cloudflare API Keys. Login to Cloudflare and click on "My Profile" on the top right of the page and scroll to "Global API Key." If you do not have any api keys, make sure to generate some. Next to "Global API Key" Select "View API Key." Make sure to copy the set of characters in the box. <img src="assets/apikey.png"></li>
+<li>Get your Cloudflare API Keys. Login to Cloudflare and click on "My Profile" on the top right of the page and scroll to "Global API Key." If you do not have any api keys, make sure to generate some. Next to "Global API Key" Select "View API Key." Make sure to copy the set of characters in the box. <br><img src="assets/apikey.png"></li>
 <li><a href="/files/MinecraftSRVRotator.zip">Download Automatic SRV Rotator</a> and unzip it. Paste your API Key between the quotes to the right of "X-Auth-Key". Type your Cloudflare account email between the quotes beside "X-Auth-Email"</li>
 <pre>{
 "X-Auth-Email":"youremail@emailprovider.com",
@@ -238,7 +238,7 @@ Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft
 </pre>
 <li>You are going to need your Zone ID. For this using a REST Client is recommended. An example of one is <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US">Advanced REST Client</a> for Google Chrome. Other extensions exist on other browsers as well. </li>
 <li>Open the REST Client and use it to send a GET Request to <span class="pre">https://api.cloudflare.com/client/v4/zones</span> parameters should look like as follows:
-<img src="assets/arcclient.png"> Make sure to put in information for X-Auth-Email and X-Auth-Key</li>
+<img src="assets/arcclient.png"><br> Make sure to put in information for X-Auth-Email and X-Auth-Key</li>
 <li>A response should come back looking something like this: <pre>{
 "result": [
   {
