@@ -162,7 +162,7 @@
    .content {
      font-size: 14px;
      padding: 0px 0px 0px 100px;
-     padding-left: 60px;
+     padding-left: 5px;
    }
    .quote {
      font-size: 14px;
@@ -185,6 +185,10 @@
    }
    h1 {
      font-size: 30px;
+   }
+   .navbar {
+    padding-left: 15px;
+    font-size: 13px;
    }
  }
   </style>
@@ -238,7 +242,7 @@ Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft
 <p>Automating the updating of SRV records allows a server to instantly switch over to a SRV target when Mojang blacklists the current one.</p>
 <ol>
 <li>First, switch to Cloudflare. The automating program only supports Cloudflare and the Cloudflare API</li>
-<li>Second, make an SRV record for the server IP to be pointed to. You can follow the steps in the section above to create one. This program currently only supports the port 25565</li>
+<li>Second, make an SRV record for the server IP to be pointed to. You can follow the steps in the section above to create one. This program currently only supports the port 25565.</li>
 <li>Get your Cloudflare API Keys. Login to Cloudflare and click on "My Profile" on the top right of the page and scroll to "Global API Key." If you do not have any api keys, make sure to generate some. Next to "Global API Key" Select "View API Key." Make sure to copy the set of characters in the box. <br><img src="assets/apikey.png"></li>
 <li><a href="/files/MinecraftSRVRotator.zip">Download Automatic SRV Rotator</a> and unzip it. Paste your API Key between the quotes to the right of "X-Auth-Key". Type your Cloudflare account email between the quotes beside "X-Auth-Email"</li>
 <pre>{
