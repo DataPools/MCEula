@@ -212,7 +212,6 @@
 <li><a href="/statistics">Statistics</a></li>
 <li><a href="/bypass">Bypass</a></li>
 <li><a href="/explanation">Explanation</a></li>
-<li><a href="https://emails.mceula.com">Emails</a></li>
 </ul>
 </header>
 </div>
@@ -232,8 +231,7 @@
 <li>Login into your main domain's registrar. For example, if your server IP was <span class="pre">play.example.com</span> you would want to login to <span class="pre">example.com</span> registrar.</li>
 <li>Go the "DNS records" section of your domain. If you don't know where this is, contact your domain registrar</li>
 <li>Add a new SRV record. If your registrar does not offer SRV records you should <a href="https://support.cloudflare.com/hc/en-us/articles/205195708-Step-3-Change-your-domain-name-servers-to-Cloudflare">switch to Cloudflare</a>.</li>
-<li>Set the service to <span class="pre">_minecraft</span>, set the protocol to <span class="pre">_tcp</span>. Don't mess with priority or weight. Set the port to <span class="pre">25565</span> or the port your server is running on. Set the target to the domain you got earlier. <br>Example:</li>
-<img src="https://camo.githubusercontent.com/8a2977005236f998bcf12be95d9116990852fc29/68747470733a2f2f692e746370722e63612f48596a4f435259">
+<li>Set the service to <span class="pre">_minecraft</span>, set the protocol to <span class="pre">_tcp</span>. Don't mess with priority or weight. Set the port to <span class="pre">25565</span> or the port your server is running on. Set the target to the domain you got earlier.
 <li>Click the "Done" button or checkmark to submit the SRV record. Mojang may blacklist the target domain within your SRV record, so you may need to change it every few days.</li>
 </ol>
 Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft's EULA Blacklist Guide</a> for the SRV guide and example picture.
@@ -254,7 +252,7 @@ Thanks to <a href="https://github.com/EcoCityCraft/MojangBlacklist">EcoCityCraft
 </pre>
 <li>You are going to need your Zone ID. For this using a REST Client is recommended. An example of one is <a href="https://chrome.google.com/webstore/detail/advanced-rest-client/hgmloofddffdnphfgcellkdfbfbjeloo?hl=en-US">Advanced REST Client</a> for Google Chrome. Other extensions exist on other browsers as well. </li>
 <li>Open the REST Client and use it to send a GET Request to <span class="pre">https://api.cloudflare.com/client/v4/zones</span> parameters should look like as follows:
-<img src="assets/arcclient.png"><br> Make sure to put in information for X-Auth-Email and X-Auth-Key</li>
+<br><img src="assets/arcclient.png"><br> Make sure to put in information for X-Auth-Email and X-Auth-Key</li>
 <li>A response should come back looking something like this: <pre>{
 "result": [
   {
